@@ -10,23 +10,29 @@ $(function() {
             $('body').css('background-image', 'url("resources/images/garden-model-railway-background' + num + '.jpg")');
         };
         var setContentPosition = function() {
-            var windowHeight = window.innerHeight;
-            if(windowHeight > 280) {
-                $('body').css('padding-top',(windowHeight - 220)+'px'); //set content to sit 200px from bottom to show image
+            if(window.innerWidth > 450) {
+                var windowHeight = window.innerHeight;
+                if (windowHeight > 280) {
+                    $('body').css('padding-top', (windowHeight - 220) + 'px'); //set content to sit 200px from bottom to show image
+                }
+            } else {
+                $('body').css('padding-top', '0');
             }
         };
         var setHeader = function() {
-            var windowHeight = window.innerHeight;
-            var target = windowHeight - 276;
-            if(target > $(window).scrollTop()) {
-                $('body').removeClass('scroll-shift');
-            } else {
-                $('body').addClass('scroll-shift');
+            if(window.innerWidth > 450) {
+                var windowHeight = window.innerHeight;
+                var target = windowHeight - 276;
+                if (target > $(window).scrollTop()) {
+                    $('body').removeClass('scroll-shift');
+                } else {
+                    $('body').addClass('scroll-shift');
+                }
             }
         };
         return {
             ready:function() {
-                if(window.innerWidth > 360) {
+                if(window.innerWidth > 450) {
                     backgroundImageRandomise();
                     setContentPosition();
                 }
@@ -56,12 +62,10 @@ $(function() {
     var view = new viewModel();
     view.ready();
 
-    if(window.innerWidth > 360) {
-        $(window).on('resize', function () {
-            view.resize();
-        });
-        $(window).scroll(function () {
-            view.scroll();
-        });
-    }
+    $(window).on('resize', function () {
+        view.resize();
+    });
+    $(window).scroll(function () {
+        view.scroll();
+    });
 });

@@ -172,12 +172,19 @@ hr {
 
 
 @media screen and (max-width: 768px ) {
+    .page-header h1 {
+        position: absolute;
+    }
+    .page-navigation a {
+        padding: 11px 10px;
+        font-size: 17px;
+    }
     .column.half {
         width: 100%;
     }
 }
 
-@media screen and (max-width: 360px ) {
+@media screen and (max-width: 450px ) {
     body {
         padding-top: 0;
     }
@@ -186,15 +193,8 @@ hr {
         background: #001257 none;
         z-index: 2;
     }
-    .page-header h1 {
-        position: absolute;
-    }
     .page-navigation {
         float:left;
-    }
-    .page-navigation a {
-        padding: 11px 10px;
-        font-size: 17px;
     }
     .content {
         margin-bottom: 0;
